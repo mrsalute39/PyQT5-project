@@ -115,7 +115,7 @@ class Registration(QMainWindow):
         cur = con.cursor()
 
         try:
-            if "@" not in self.usernameEdit.text() and "." not in self.usernameEdit.text() and\
+            if "@" not in self.usernameEdit.text() and "." not in self.usernameEdit.text() and \
                     len(self.usernameEdit.text()) > 5:
                 self.statusBar().showMessage("Ошибка! Неверно указана электронная почта!")
 
@@ -222,6 +222,8 @@ class Task(QWidget):
                     res.exec()
                     self.close()
 
+
+
                 else:
                     cur = con.cursor()
                     tag = cur.execute(f'''SELECT tag FROM tasks WHERE id = {self.actual_id}''').fetchone()[0]
@@ -274,6 +276,7 @@ class Task(QWidget):
                     res = Result()
                     res.exec()
                     self.close()
+
         except AttributeError:
             cur = con.cursor()
             tag = cur.execute(f'''SELECT tag FROM tasks WHERE id = {self.actual_id}''').fetchone()[0]
