@@ -52,19 +52,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="answerButton">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>410</y>
-     <width>201</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ответить</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

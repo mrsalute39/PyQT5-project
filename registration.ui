@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>1038</width>
-    <height>879</height>
+    <height>779</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1038</width>
+    <height>779</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1038</width>
+    <height>779</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Окно Регистрации</string>
@@ -176,7 +188,14 @@
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -1,0 +1,2 @@
+task_creator_manual_read = 0
+test_creator_manual_read = 0
