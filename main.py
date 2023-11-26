@@ -1,4 +1,4 @@
-from random import randint, shuffle
+from random import randint, shuffle, choice
 import sys
 import sqlite3
 from PyQt5 import uic, QtCore
@@ -801,8 +801,11 @@ class MainProgram(QMainWindow):
     def get_random_task(self):
         try:
             cur = con.cursor()
-            id_max = cur.execute(f'''SELECT MAX(id) FROM tasks''').fetchone()[0]
-            self.rd = Task(randint(1, id_max))
+            #id_max = cur.execute(f'''SELECT MAX(id) FROM tasks''').fetchone()[0]
+            temp = cur.execute('''SELECT id FROM tasks''').fetchall()
+            possible_ids = [x[0] for x in temp]
+
+            self.rd = Task(choice(possible_ids))
             self.rd.show()
             cur.close()
         except Exception as e:
