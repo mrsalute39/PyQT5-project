@@ -333,7 +333,7 @@ class ExamResultStatus(QDialog):
             if x[0] in x[1]:
                 counter += 1
 
-        percentage = counter / len(answers_list) * 100
+        percentage = round(counter / len(answers_list) * 100)
         self.rightanswerslabel.setText(f"Ваш результат {counter} из {len(answers_list)} ({percentage}%)")
 
         if percentage >= 60:
