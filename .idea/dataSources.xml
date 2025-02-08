@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\staspc\PycharmProjects\PyQT5 project\test_bd.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="test_bd" uuid="93d44a65-17a0-4ce7-8dd1-6d15b318f5e0">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Tema\Documents\GitHub\PyQT5-project\test_bd.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

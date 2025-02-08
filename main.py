@@ -49,7 +49,7 @@ class NoRightAnswersError(Exception):
 class Authorization(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("authorization.ui", self)
+        uic.loadUi("ui/authorization.ui", self)
 
         self.authorizationButton.clicked.connect(self.authorize)
         self.registrationButton.clicked.connect(self.switch_to_registration)
@@ -84,7 +84,7 @@ class Authorization(QMainWindow):
 class Registration(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("registration.ui", self)
+        uic.loadUi("ui/registration.ui", self)
         self.goBackButton.clicked.connect(self.return_to_auth)
         self.createAccountButton.clicked.connect(self.create_new_account)
 
@@ -131,7 +131,7 @@ class Registration(QMainWindow):
 class Task(QWidget):
     def __init__(self, num, close_on_right_answer=True):
         super().__init__()
-        uic.loadUi("randomtask.ui", self)
+        uic.loadUi("ui/randomtask.ui", self)
         self.answerButton = QPushButton("ответить", self)
         self.answerButton.setGeometry(450, 550, 201, 31)
         self.answerButton.clicked.connect(self.check_answer)
@@ -310,7 +310,7 @@ class ExamTask(Task):
 class ExamResult(QDialog):
     def __init__(self, answers_list):
         super().__init__()
-        uic.loadUi("examresult.ui", self)
+        uic.loadUi("ui/examresult.ui", self)
         self.answers_list = answers_list
         self.flag = False
         self.yesButton.clicked.connect(self.calculate)
@@ -326,7 +326,7 @@ class ExamResult(QDialog):
 class ExamResultStatus(QDialog):
     def __init__(self, answers_list):
         super().__init__()
-        uic.loadUi("examresultstatus.ui", self)
+        uic.loadUi("ui/examresultstatus.ui", self)
         counter = 0
 
         for x in answers_list:
@@ -345,7 +345,7 @@ class ExamResultStatus(QDialog):
 class Exam(QMainWindow):
     def __init__(self, category):
         super().__init__()
-        uic.loadUi("examwindow.ui", self)
+        uic.loadUi("ui/examwindow.ui", self)
 
         cur = con.cursor()
         max_id = cur.execute('''SELECT MAX(id) from tasks''').fetchone()[0]
@@ -457,27 +457,27 @@ class Exam(QMainWindow):
 class Result(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi("randomtaskresult.ui", self)
+        uic.loadUi("ui/randomtaskresult.ui", self)
 
 
 class TaskRedactorManual(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi("taskcreatormanual.ui", self)
+        uic.loadUi("ui/taskcreatormanual.ui", self)
 
         self.okButton.clicked.connect(self.close)
         self.already_read.stateChanged.connect(self.check_config)
 
     def check_config(self):
         if self.already_read.isChecked():
-            with open("config.txt", mode="r+", encoding="utf-8") as f:
+            with open("config/config.txt", mode="r+", encoding="utf-8") as f:
                 config = "".join([line.replace("task_creator_manual_read = 0", "task_creator_manual_read = 1")
                                   for line in f.readlines()])
                 f.seek(0)
                 f.write(config)
                 f.close()
         else:
-            with open("config.txt", mode="r+", encoding="utf-8") as f:
+            with open("config/config.txt", mode="r+", encoding="utf-8") as f:
                 config = "".join([line.replace("task_creator_manual_read = 1", "task_creator_manual_read = 0")
                                   for line in f.readlines()])
                 f.seek(0)
@@ -488,7 +488,7 @@ class TaskRedactorManual(QDialog):
 class TaskRedactor(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("taskcreator.ui", self)
+        uic.loadUi("ui/taskcreator.ui", self)
         self.type_answer_buttons = [self.lineanswerButton, self.oneanswerButton, self.multipleanswerButton]
         self.buttonGroup.setId(self.lineanswerButton, 0)
         self.buttonGroup.setId(self.oneanswerButton, 1)
@@ -659,7 +659,7 @@ class TaskRedactor(QMainWindow):
 class CategoryTasks(QMainWindow):
     def __init__(self, task_ids):
         super().__init__()
-        uic.loadUi("categorytasks.ui", self)
+        uic.loadUi("ui/categorytasks.ui", self)
 
         self.task_ids = task_ids
 
@@ -712,13 +712,13 @@ class CategoryTasks(QMainWindow):
 class NoAccess(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi("access_denied.ui", self)
+        uic.loadUi("ui/access_denied.ui", self)
 
 
 class TestCreator(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("testcreator.ui", self)
+        uic.loadUi("ui/testcreator.ui", self)
         self.pushButton.clicked.connect(self.create_test)
 
     def create_test(self):
@@ -757,14 +757,14 @@ class TestCreatorManual(QDialog):
 
     def check_config(self):
         if self.already_read.isChecked():
-            with open("config.txt", mode="r+", encoding="utf-8") as f:
+            with open("config/config.txt", mode="r+", encoding="utf-8") as f:
                 config = "".join([line.replace("test_creator_manual_read = 0", "test_creator_manual_read = 1")
                                   for line in f.readlines()])
                 f.seek(0)
                 f.write(config)
                 f.close()
         else:
-            with open("config.txt", mode="r+", encoding="utf-8") as f:
+            with open("config/config.txt", mode="r+", encoding="utf-8") as f:
                 config = "".join([line.replace("test_creator_manual_read = 1", "test_creator_manual_read = 0")
                                   for line in f.readlines()])
                 f.seek(0)
@@ -775,13 +775,13 @@ class TestCreatorManual(QDialog):
 class Xd(QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi("xd.ui", self)
+        uic.loadUi("ui/xd.ui", self)
 
 
 class MainProgram(QMainWindow):
     def __init__(self):
         super(MainProgram, self).__init__()
-        uic.loadUi("mainwindow.ui", self)
+        uic.loadUi("ui/mainwindow.ui", self)
 
         self.RandomTaskButton.clicked.connect(self.get_random_task)
         self.searchButton.clicked.connect(self.search_task)
@@ -801,7 +801,7 @@ class MainProgram(QMainWindow):
     def get_random_task(self):
         try:
             cur = con.cursor()
-            #id_max = cur.execute(f'''SELECT MAX(id) FROM tasks''').fetchone()[0]
+            # id_max = cur.execute(f'''SELECT MAX(id) FROM tasks''').fetchone()[0]
             temp = cur.execute('''SELECT id FROM tasks''').fetchall()
             possible_ids = [x[0] for x in temp]
 
@@ -850,7 +850,7 @@ class MainProgram(QMainWindow):
                 self.redactor = TaskRedactor()
                 self.redactor.show()
 
-                with open("config.txt", mode="r", encoding="utf-8") as f:
+                with open("config/config.txt", mode="r", encoding="utf-8") as f:
                     lines = [x.rstrip('\n') for x in f]
                     f.close()
                 if lines[0] == 'task_creator_manual_read = 0':
@@ -870,7 +870,7 @@ class MainProgram(QMainWindow):
             self.tcreator = TestCreator()
             self.tcreator.show()
 
-            with open("config.txt", mode="r", encoding="utf-8") as f:
+            with open("config/config.txt", mode="r", encoding="utf-8") as f:
                 lines = [x.rstrip('\n') for x in f]
                 f.close()
             if lines[1] == "test_creator_manual_read = 0":
@@ -909,7 +909,7 @@ class MainProgram(QMainWindow):
 
 
 if __name__ == '__main__':
-    con = sqlite3.connect("test_bd.sqlite")
+    con = sqlite3.connect("database/test_bd.sqlite")
     app = QApplication(sys.argv)
     auth = Authorization()
     auth.show()
